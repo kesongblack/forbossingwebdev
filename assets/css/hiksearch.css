@@ -102,7 +102,7 @@ footer {
     padding: 20px 0;
 }
 
-.footer-powered p {
+.footer-powered p, .footer-devinfo p {
     margin: 0;
     font-size: 0.8em;
 }
