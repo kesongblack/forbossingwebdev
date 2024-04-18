@@ -99,5 +99,14 @@ footer {
 }
 
 .footer-powered {
-    height: 60px;
+    padding: 20px 0;
+}
+
+.footer-powered p {
+    margin: 0;
+    font-size: 0.8em;
+}
+
+.footer-powered img { 
+    height: 10px;;
 }
