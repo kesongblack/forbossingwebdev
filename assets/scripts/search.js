@@ -1,3 +1,5 @@
+alert('Hello!');
+
 // Assuming you're using Node.js to read the JSON file
 const fs = require('fs');
 
