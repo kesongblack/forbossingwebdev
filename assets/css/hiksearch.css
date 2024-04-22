@@ -29,7 +29,6 @@ body {
 }
 .search-box input[type="text"]:focus {
     outline: none;
-    background-color: red;
 }
 .search-box button {
     background-color: dodgerblue;
