@@ -1,31 +1,42 @@
-class JSONReader {
-  constructor(filePath) {
-    this.filePath = filePath;
-  }
+// Grabbing code from chatGPT... Essentially, this code will load the JSON file full of 
+// topic lists and shows all topics that includes the keywords
 
-  async read() {
-    try {
-      const response = await fetch(this.filePath);
+function readJSON(filePath) {
+  return fetch(filePath)
+    .then(response => {
       if (!response.ok) {
         throw new Error('Failed to fetch JSON file');
       }
-      const jsonData = await response.json();
-      return jsonData;
-    } catch (error) {
+      return response.json();
+    })
+    .catch(error => {
       console.error('Error reading JSON file:', error);
       return null;
-    }
+    });
+}
+
+function searchTitles(jsonData, keyword) {
+  if (!jsonData || !jsonData.titles || !Array.isArray(jsonData.titles)) {
+    console.error('Invalid JSON data');
+    return [];
   }
+
+  const matchedTitles = jsonData.titles.filter(title =>
+    title.toLowerCase().includes(keyword.toLowerCase())
+  );
+  return matchedTitles;
 }
 
 // Example usage
 const jsonFilePath = 'docs/topics.json'; // Path to your JSON file
-const reader = new JSONReader(jsonFilePath);
-reader.read().then(data => {
-  if (data) {
-    console.log('JSON data:', data);
-    // Perform actions with the JSON data here
-  } else {
-    console.log('No JSON data was retrieved.');
-  }
-});
+const keyword = 'another'; // Keyword to search for
+
+readJSON(jsonFilePath)
+  .then(jsonData => {
+    if (jsonData) {
+      const matchedTitles = searchTitles(jsonData, keyword);
+      console.log(`Titles matching "${keyword}":`, matchedTitles);
+    } else {
+      console.log('No JSON data was retrieved.');
+    }
+  });
