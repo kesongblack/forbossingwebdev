@@ -1,0 +1,12 @@
+[
+    {
+        "title": "A Sample title",
+        "category": "New York",
+        "path": "john.doe@example.com"
+    },
+    {
+        "title": "Another sample title",
+        "category": "New York",
+        "path": "john.doe@example.com"
+    }
+]
