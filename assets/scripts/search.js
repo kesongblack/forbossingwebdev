@@ -1,6 +1,3 @@
-// Grabbing code from chatGPT... Essentially, this code will load the JSON file full of 
-// topic lists and shows all topics that includes the keywords
-
 function readJSON(filePath) {
   return fetch(filePath)
     .then(response => {
@@ -16,20 +13,20 @@ function readJSON(filePath) {
 }
 
 function searchTitles(jsonData, keyword) {
-  if (!jsonData || !jsonData.titles || !Array.isArray(jsonData.titles)) {
+  if (!Array.isArray(jsonData)) {
     console.error('Invalid JSON data');
     return [];
   }
 
-  const matchedTitles = jsonData.titles.filter(title =>
-    title.toLowerCase().includes(keyword.toLowerCase())
+  const matchedTitles = jsonData.filter(item =>
+    item.title.toLowerCase().includes(keyword.toLowerCase())
   );
   return matchedTitles;
 }
 
 // Example usage
-const jsonFilePath = 'docs/topics.json'; // Path to your JSON file
-const keyword = 'another'; // Keyword to search for
+const jsonFilePath = 'titles.json'; // Path to your JSON file
+const keyword = 'sample'; // Keyword to search for
 
 readJSON(jsonFilePath)
   .then(jsonData => {
