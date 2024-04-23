@@ -26,7 +26,7 @@ function searchTitles(jsonData, keyword) {
 
 // Example usage
 const jsonFilePath = 'docs/topics.json'; // Path to your JSON file
-const keyword = 'sample'; // Keyword to search for
+const keyword = 'another'; // Keyword to search for
 
 readJSON(jsonFilePath)
   .then(jsonData => {
